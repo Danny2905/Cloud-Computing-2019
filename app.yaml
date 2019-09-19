@@ -3,4 +3,7 @@ api_version: 1
 
 handlers:
 - url: /index.php
+  script: index.
+
+- url: /
   script: index.php
