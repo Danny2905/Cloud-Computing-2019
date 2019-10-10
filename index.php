@@ -57,23 +57,18 @@
           $query->execute();
           $result = $query -> fetchAll();
        }
-
       ?>
 
 
     <script type="text/javascript">
-
       // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
-
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawChart);
-
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
       function drawChart() {
-
         // Create the data table.
         var data = new google.visualization.arrayToDataTable([
           ['Champion', 'Win Rate'],
@@ -82,7 +77,6 @@
               echo "['".$row["ChampionName"]."', ".$row["WinRate"]."],"; 
             } ?>
           ]);
-
         // Set chart options
         var options = {'title':'Champion Win Rate',
                        width: 2500,
@@ -93,7 +87,6 @@
                       }
                     }
                      };
-
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
         chart.draw(data, options);
@@ -121,5 +114,14 @@
 
     <!--Div that will hold the pie chart-->
     <div class="" id="chart_div"></div>
+    <a href="http://s3599191-cc2019.appspot.com.storage.googleapis.com/champion_data.txt">Download Data</a>
+
+    <?php
+      $handle = fopen('gs://s3599191-cc2019.appspot.com/champion_data.txt','w');
+      foreach( $result as $row ) {
+          fwrite($handle,$row['ChampionName'].','.$row['WinRate'].',');
+      }
+      fclose($handle);
+    ?>
   </body>
 </html>
