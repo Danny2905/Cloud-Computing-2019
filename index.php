@@ -86,7 +86,7 @@
         // Set chart options
         var options = {'title':'Champion Win Rate',
                        width: 2500,
-                       height :750,
+                       height :750, 
                        hAxis : { 
                         textStyle : {
                           fontSize: 9 // or the number you want
