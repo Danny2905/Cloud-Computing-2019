@@ -2,8 +2,14 @@ runtime: php55
 api_version: 1
 
 handlers:
-- url: /index.php
-  script: index.
+- url: /WinRate.php
+  script: WinRate.php
+
+- url: /BanRate.php
+  script: BanRate.php
+
+- url: /PickRate.php
+  script: PickRate.php
 
 - url: /
-  script: index.php
+  script: WinRate.php
